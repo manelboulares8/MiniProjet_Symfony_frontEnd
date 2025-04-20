@@ -1,0 +1,28 @@
+<div class="container mt-4">
+    <h3>Modifier un article</h3>
+    <form (ngSubmit)="modifierArticle()" #articleForm="ngForm" class="mt-3">
+  
+      <div class="mb-3">
+        <label for="nom" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="article.nom" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="prix" class="form-label">Prix</label>
+        <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="article.prix" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="article.stock" required />
+      </div>
+  
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="article.description" required></textarea>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+  </div>
+  

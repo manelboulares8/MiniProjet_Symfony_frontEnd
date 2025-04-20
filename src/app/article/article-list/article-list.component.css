@@ -1,0 +1,7 @@
+.full-page-bg {
+    background-color: #75c9d4; /* bleu ciel */
+    min-height: 100vh; /* Assure que l'élément occupe toute la hauteur de la page */
+    padding: 0;
+    margin: 0;
+  }
+  

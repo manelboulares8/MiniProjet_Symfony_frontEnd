@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4" >🧾 Liste des Articles</h2>
+    <div class="mb-4 text-center">
+        <input
+          type="text"
+          class="form-control w-50 mx-auto"
+          placeholder="🔍 Rechercher un article..."
+          [(ngModel)]="searchText"
+        />
+      </div>
+      
+    <div *ngIf="articles.length > 0; else noArticles">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="col" *ngFor="let article of articles | filterArticles:searchText">
+            <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title text-primary">{{ article.nom }}</h5>
+              <p class="card-text">{{ article.description }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Prix :</strong> {{ article.prix }} DT</li>
+              <li class="list-group-item"><strong>Stock :</strong> {{ article.stock }}</li>
+              <a [routerLink]="['/articles/edit', article.id]" class="btn btn-warning btn-sm">Modifier</a>
+              <button class="btn btn-danger mt-2" (click)="supprimerArticle(article.id)">
+                🗑️ Supprimer
+              </button>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noArticles>
+      <div class="alert alert-warning mt-4 text-center">
+        Aucun article trouvé pour le moment.
+      </div>
+    </ng-template>
+  </div>
