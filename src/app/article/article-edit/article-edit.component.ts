@@ -38,4 +38,7 @@ export class ArticleEditComponent implements OnInit {
       this.router.navigate(['/lister-articles']);
     });
   }
+  annulerModification(){
+    this.router.navigate(['lister-articles'])
+  }
 }

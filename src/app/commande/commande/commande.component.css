@@ -1,0 +1,82 @@
+/* Style général */
+.commandes-container {
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .commandes-header {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  }
+  
+  .commandes-body {
+    background-color: #f8f9fa;
+  }
+  
+  /* Tableau */
+  .commandes-table {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table-header {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  /* Éléments interactifs */
+  .search-box {
+    border-radius: 50px;
+    border: 2px solid #e9ecef;
+    padding: 10px 20px;
+    transition: all 0.3s;
+  }
+  
+  .search-box:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 0 0.2rem rgba(37, 117, 252, 0.25);
+  }
+  
+  /* Badges de statut */
+  .status-badge {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Boutons */
+  .btn-action {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+  }
+  
+  .btn-edit {
+    background-color: #ffc107;
+    color: #212529;
+    border: none;
+  }
+  
+  .btn-edit:hover {
+    background-color: #e0a800;
+    transform: translateY(-2px);
+  }
+  
+  .btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+  }
+  
+  .btn-delete:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+  }
+  
+  /* Effets de survol */
+  tr:hover {
+    background-color: rgba(37, 117, 252, 0.05);
+  }

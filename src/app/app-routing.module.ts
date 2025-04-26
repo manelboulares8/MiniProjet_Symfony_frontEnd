@@ -3,14 +3,21 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticleAddComponent } from './article/article-add/article-add.component';
 import { ArticleListComponent } from './article/article-list/article-list.component';
 import { ArticleEditComponent } from './article/article-edit/article-edit.component';
+import { AddCommandeComponent } from './commande/add-commande/add-commande.component';
+import { CommandeComponent } from './commande/commande/commande.component';
+import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
 
 const routes: Routes = [
   { path: 'add-article', component: ArticleAddComponent },
 
 {path :'lister-articles',component:ArticleListComponent},
 { path: '', redirectTo: 'lister-articles', pathMatch: 'full' },
-{ path: 'articles/edit/:id', component: ArticleEditComponent }
+{ path: 'articles/edit/:id', component: ArticleEditComponent },
  // ✅ route par défaut
+ { path: 'add-commande', component: AddCommandeComponent },
+ {path:'commande',component:CommandeComponent},
+ { path: 'commandes/edit/:id', component: ModifierCommandeComponent }
+
 ];
 
 @NgModule({

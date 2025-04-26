@@ -18,6 +18,9 @@ import { ArticleAddComponent } from './article/article-add/article-add.component
 import { RouterModule } from '@angular/router';
 import { ArticleEditComponent } from './article/article-edit/article-edit.component';
 import { FilterArticlesPipe } from './filter-articles.pipe';
+import { CommandeComponent } from './commande/commande/commande.component';
+import { AddCommandeComponent } from './commande/add-commande/add-commande.component';
+import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,10 @@ import { FilterArticlesPipe } from './filter-articles.pipe';
     ArticleListComponent,
     ArticleEditComponent,
     FilterArticlesPipe,
-    FilterArticlesPipe
+    FilterArticlesPipe,
+    CommandeComponent,
+    AddCommandeComponent,
+    ModifierCommandeComponent
 
 
     

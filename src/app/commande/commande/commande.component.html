@@ -1,0 +1,65 @@
+<div class="container mt-4 commandes-container">
+  <div class="commandes-header p-4 rounded-top">
+    <h2 class="text-center mb-4 text-white">📋 Liste des Commandes</h2>
+  </div>
+
+  <div class="commandes-body p-4 rounded-bottom">
+    <div class="mb-4">
+      <input
+        type="text"
+        class="form-control search-box"
+        placeholder="🔍 Rechercher une commande..."
+        [(ngModel)]="searchText"
+      />
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-hover commandes-table">
+        <thead>
+          <tr class="table-header">
+            <th>ID</th>
+            <th>Article</th>
+            <th>Quantité</th>
+            <th>Date</th>
+            <th>Total</th>
+            <th>Statut</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of commandes">
+            <td class="fw-bold">#{{commande.id}}</td>
+            <td>{{ getArticleName(commande.articleId) }}</td>
+            <td>{{ commande.quantite }}</td>
+            <td>{{ commande.dateCommande | date:'mediumDate' }}</td>
+            <td class="text-success fw-bold">{{ commande.total | currency:'DT':'symbol':'1.2-2' }}</td>
+            <td>
+              <span class="badge rounded-pill status-badge"
+                [ngClass]="{
+                  'bg-warning': commande.status === 'en cours',
+                  'bg-success': commande.status === 'livrée',
+                  'bg-danger': commande.status === 'annulée'
+                }">
+                {{ commande.status }}
+              </span>
+            </td>
+            <td>
+              <button class="btn btn-action btn-edit" (click)="editCommande(commande.id)">
+                <i class="fas fa-edit"></i> Modifier
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-action btn-delete" (click)="deleteCommande(commande.id)">
+                <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="commandes.length === 0" class="alert alert-info mt-4 text-center">
+      Aucune commande trouvée.
+    </div>
+  </div>
+</div>

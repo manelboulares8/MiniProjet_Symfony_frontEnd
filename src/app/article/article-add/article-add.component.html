@@ -1,28 +1,67 @@
-<div class="container mt-4">
-    <h3>Ajouter un nouvel article</h3>
+<div class="container article-form-container mt-4">
+  <div class="article-form-header p-4 rounded-top" style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);">
+    <h3 class="text-center text-white mb-0">➕ Ajouter un nouvel article</h3>
+  </div>
+
+  <div class="article-form-body p-4 rounded-bottom" style="background-color: #ffffff;">
     <form (ngSubmit)="ajouterArticle()" #articleForm="ngForm" class="mt-3">
-  
-      <div class="mb-3">
-        <label for="nom" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="article.nom" required />
+      <!-- Champ Nom -->
+      <div class="mb-4">
+        <label for="nom" class="form-label fw-bold">Nom de l'article</label>
+        <input type="text" class="form-control form-control-lg" 
+               id="nom" name="nom" 
+               [(ngModel)]="article.nom" 
+               required
+               placeholder="Ex: Ordinateur portable">
+        <div class="invalid-feedback">Veuillez saisir un nom</div>
       </div>
-  
-      <div class="mb-3">
-        <label for="prix" class="form-label">Prix</label>
-        <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="article.prix" required />
+
+      <!-- Champ Prix -->
+      <div class="mb-4">
+        <label for="prix" class="form-label fw-bold">Prix (DT)</label>
+        <div class="input-group">
+          <input type="number" class="form-control form-control-lg" 
+                 id="prix" name="prix" 
+                 [(ngModel)]="article.prix" 
+                 required 
+                 min="0.01" 
+                 step="0.01"
+                 placeholder="0.00">
+          <span class="input-group-text">DT</span>
+        </div>
+        <div class="invalid-feedback">Veuillez saisir un prix valide</div>
       </div>
-  
-      <div class="mb-3">
-        <label for="stock" class="form-label">Stock</label>
-        <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="article.stock" required />
+
+      <!-- Champ Stock -->
+      <div class="mb-4">
+        <label for="stock" class="form-label fw-bold">Quantité en stock</label>
+        <input type="number" class="form-control form-control-lg" 
+               id="stock" name="stock" 
+               [(ngModel)]="article.stock" 
+               required 
+               min="0"
+               placeholder="0">
+        <div class="invalid-feedback">Veuillez saisir une quantité valide</div>
       </div>
-  
-      <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" [(ngModel)]="article.description" required></textarea>
+
+      <!-- Champ Description -->
+      <div class="mb-4">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea class="form-control form-control-lg" 
+                  id="description" name="description" 
+                  [(ngModel)]="article.description" 
+                  required
+                  rows="3"
+                  placeholder="Décrivez l'article en détail..."></textarea>
+        <div class="invalid-feedback">Veuillez saisir une description</div>
       </div>
-  
-      <button type="submit" class="btn btn-success">Ajouter</button>
+
+      <!-- Boutons -->
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-lg" [disabled]="!articleForm.form.valid">
+          <i class="fas fa-plus-circle me-2"></i>Ajouter l'article
+        </button>
+      </div>
     </form>
   </div>
-  
+</div>
