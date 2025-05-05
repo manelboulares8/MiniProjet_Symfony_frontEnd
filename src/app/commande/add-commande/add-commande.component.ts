@@ -3,7 +3,7 @@ import { Commande } from '../../models/commande.model';
 import { Article } from '../../models/article.model';
 import { CommandeService } from '../../services/commande.service';
 import { ArticleService } from '../../services/article.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-commande',
@@ -25,21 +25,35 @@ export class AddCommandeComponent implements OnInit {
 
   articles: Article[] = [];
   tot: any;
-
+  articleId!: number;
+  article: any;
   constructor(
     private commandeService: CommandeService,
     private articleService: ArticleService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.loadArticles();
+    
+    this.route.queryParams.subscribe(params => {
+      const id = +params['articleId'];
+      if (id) {
+        this.commande.articleId = id;
+      }
+      this.loadArticles();
+    });
   }
 
   loadArticles(): void {
     this.articleService.getArticles().subscribe(
       (data) => {
         this.articles = data;
+        if (this.commande.articleId) {
+          this.selectedArticle = this.articles.find(a => a.id === this.commande.articleId) || null;
+          this.updateTotal(); // Calcule le total automatiquement
+        }
       },
       (error) => {
         console.error('Erreur lors du chargement des articles', error);

@@ -1,0 +1,67 @@
+<div class="container mt-4 articles-container">
+    <div class="articles-header p-4 rounded-top">
+      <h2 class="text-center mb-4 text-white">🔍 Recherche d'Articles</h2>
+    </div>
+  
+    <div class="articles-body p-4 rounded-bottom">
+      <div class="row mb-4">
+        <div class="col-md-5">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="minPrice"
+            placeholder="Prix minimum (€)"
+          />
+        </div>
+        <div class="col-md-5">
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="maxPrice"
+            placeholder="Prix maximum (€)"
+          />
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" (click)="search()">
+            <i class="fas fa-search"></i> Rechercher
+          </button>
+        </div>
+      </div>
+  
+      <div *ngIf="articles.length > 0">
+        <div class="table-responsive">
+          <table class="table table-hover articles-table">
+            <thead>
+              <tr class="table-header">
+                <th>Article</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th colspan="2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let article of articles">
+                <td class="fw-bold">{{article.nom}}</td>
+                <td class="text-success fw-bold">{{ article.prix | currency:'€':'symbol':'1.2-2' }}</td>
+                <td>{{ article.description || 'Aucune description disponible' }}</td>
+                <td>
+                  <button class="btn btn-action btn-order" (click)="passerCommande(article.id)">
+                    <i class="fas fa-shopping-cart"></i> Commander
+                  </button>
+                </td>
+                <td>
+                  <button class="btn btn-action btn-details" (click)="voirDetails(article.id)">
+                    <i class="fas fa-info-circle"></i> Détails
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <div *ngIf="articles.length === 0 && (minPrice || maxPrice)" class="alert alert-info mt-4 text-center">
+        Aucun article trouvé dans cette gamme de prix.
+      </div>
+    </div>
+  </div>

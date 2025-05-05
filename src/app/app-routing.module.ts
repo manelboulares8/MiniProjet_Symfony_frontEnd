@@ -6,6 +6,7 @@ import { ArticleEditComponent } from './article/article-edit/article-edit.compon
 import { AddCommandeComponent } from './commande/add-commande/add-commande.component';
 import { CommandeComponent } from './commande/commande/commande.component';
 import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
+import { ArticleSearchComponent } from './article-search/article-search.component';
 
 const routes: Routes = [
   { path: 'add-article', component: ArticleAddComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
  // ✅ route par défaut
  { path: 'add-commande', component: AddCommandeComponent },
  {path:'commande',component:CommandeComponent},
- { path: 'commandes/edit/:id', component: ModifierCommandeComponent }
+ { path: 'commandes/edit/:id', component: ModifierCommandeComponent },
+ {path:'searchByPrice',component:ArticleSearchComponent},
 
 ];
 

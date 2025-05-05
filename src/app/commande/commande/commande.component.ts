@@ -14,8 +14,10 @@ import { Router } from '@angular/router';
 export class CommandeComponent implements OnInit {
   commandes: Commande[] = [];
   articles: Article[] = [];
-
-
+  currentPage: number = 1; // Page actuelle
+  itemsPerPage: number = 5;
+  filteredCommandes: Commande[] = [];
+  searchText: string = '';
   constructor(private commandeService: CommandeService,    private articleService: ArticleService,    private router: Router
     // Ajoutez ceci
   ) {}
@@ -74,5 +76,20 @@ export class CommandeComponent implements OnInit {
   }
   editCommande(id: number): void {
     this.router.navigate(['/commandes/edit', id]);
+  }
+  filterCommandes() {
+    if (!this.searchText) {
+      this.filteredCommandes = this.commandes;
+    } else {
+      this.filteredCommandes = this.commandes.filter((commande) =>
+        commande.id.toString().includes(this.searchText) ||
+        this.getArticleName(commande.articleId).toLowerCase().includes(this.searchText.toLowerCase()) ||
+        commande.status.toLowerCase().includes(this.searchText.toLowerCase())
+      );
+    }
+  }
+  totalPages(): number[] {
+    const pageCount = Math.ceil(this.commandes.length / this.itemsPerPage);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
   }
 }

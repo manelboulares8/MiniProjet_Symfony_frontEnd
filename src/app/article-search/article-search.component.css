@@ -1,0 +1,45 @@
+.articles-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .articles-header {
+    background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  }
+  
+  .articles-body {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-top: none;
+  }
+  
+  .table-header {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .btn-action {
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  
+  .btn-order {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-order:hover {
+    background-color: #218838;
+  }
+  
+  .btn-details {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .btn-details:hover {
+    background-color: #138496;
+  }
+  
+  .articles-table tbody tr:hover {
+    background-color: rgba(0, 13, 255, 0.05);
+  }

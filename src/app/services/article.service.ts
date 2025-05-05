@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -32,5 +32,8 @@ export class ArticleService {
   deleteArticle(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-  
+  searchArticlesByPrice(min: number, max: number): Observable<Article[]> {
+    let params = new HttpParams().set('min', min).set('max', max);
+    return this.http.get<Article[]>(`${this.apiUrl}/searchByPrice`, { params });
+  }
 }

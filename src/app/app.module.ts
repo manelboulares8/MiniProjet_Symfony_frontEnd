@@ -21,6 +21,8 @@ import { FilterArticlesPipe } from './filter-articles.pipe';
 import { CommandeComponent } from './commande/commande/commande.component';
 import { AddCommandeComponent } from './commande/add-commande/add-commande.component';
 import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
+import { ArticleSearchComponent } from './article-search/article-search.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,9 @@ import { ModifierCommandeComponent } from './commande/modifier-commande/modifier
     FilterArticlesPipe,
     CommandeComponent,
     AddCommandeComponent,
-    ModifierCommandeComponent
+    ModifierCommandeComponent,
+    ArticleSearchComponent,
+    PaginatePipe,
 
 
     

@@ -1,6 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Article, ArticleService } from '../../services/article.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-list',
@@ -11,8 +12,11 @@ import { CommonModule } from '@angular/common';
 
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
+  currentPage = 1;
+  itemsPerPage = 3;
+  searchText: string = '';
 
-  constructor(private articleService: ArticleService) {}
+  constructor(private articleService: ArticleService,private router: Router) {}
 
   ngOnInit(): void {
     this.articleService.getArticles().subscribe({
@@ -34,5 +38,24 @@ export class ArticleListComponent implements OnInit {
       });
     }
   }
+  passerCommande(articleId: number): void {
+    this.router.navigate(['/add-commande'],{ queryParams: { articleId } });
+  }
+  filteredArticles(): any[] {
+    return this.articles.filter(article =>
+      !this.searchText || article.nom.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
   
+  
+  totalPages(): number[] {
+    const total = this.filteredArticles().length;
+    const pages = Math.ceil(total / this.itemsPerPage);
+    return Array(pages).fill(0).map((_, i) => i + 1);
+  }
+  paginatedArticles(): Article[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredArticles().slice(startIndex, endIndex);
+  }
 }
