@@ -17,14 +17,15 @@ export class ModifierCommandeComponent {
     articleId: 0,
     dateCommande: new Date().toISOString(),
     status: 'en cours',
-    total: 0
+    total: 0,
+    clientId: 0
   };
   articles: Article[] = [];
   isLoading = true;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    public router: Router,
     private commandeService: CommandeService,
     private articleService: ArticleService
   ) {}

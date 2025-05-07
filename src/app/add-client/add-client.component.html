@@ -1,0 +1,80 @@
+<div class="container mt-4 client-container">
+    <div class="client-header p-4 rounded-top">
+      <h2 class="text-center mb-4 text-white">➕ Ajouter un Nouveau Client</h2>
+    </div>
+  
+    <div class="client-body p-4 rounded-bottom">
+      <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <label for="nom" class="form-label fw-bold">Nom</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="nom" 
+              formControlName="nom" 
+              placeholder="Nom complet"
+              required>
+            <div *ngIf="clientForm.get('nom')?.invalid && clientForm.get('nom')?.touched" 
+                 class="text-danger small mt-1">
+              <i class="fas fa-exclamation-circle"></i> Le nom est requis
+            </div>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="email" class="form-label fw-bold">Email</label>
+            <input 
+              type="email" 
+              class="form-control" 
+              id="email" 
+              formControlName="email" 
+              placeholder="email@exemple.com"
+              required>
+            <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" 
+                 class="text-danger small mt-1">
+              <i class="fas fa-exclamation-circle"></i> Email invalide
+            </div>
+          </div>
+  
+          <div class="col-md-4">
+            <label for="adresse" class="form-label fw-bold">Adresse</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="adresse" 
+              formControlName="adresse" 
+              placeholder="Adresse complète"
+              required>
+            <div *ngIf="clientForm.get('adresse')?.invalid && clientForm.get('adresse')?.touched" 
+                 class="text-danger small mt-1">
+              <i class="fas fa-exclamation-circle"></i> L'adresse est requise
+            </div>
+          </div>
+        </div>
+  
+        <div class="text-center">
+          <button 
+            type="submit" 
+            class="btn btn-save w-25"
+            [disabled]="clientForm.invalid || isLoading">
+            <span *ngIf="!isLoading"><i class="fas fa-save me-2"></i>Enregistrer</span>
+            <span *ngIf="isLoading">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              Enregistrement...
+            </span>
+          </button>
+        </div>
+      </form>
+  
+      <!-- Messages de feedback -->
+      <div *ngIf="successMessage" class="alert alert-success alert-dismissible fade show mt-4 text-center">
+        <i class="fas fa-check-circle me-2"></i>{{ successMessage }}
+        <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+      </div>
+  
+      <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show mt-4 text-center">
+        <i class="fas fa-exclamation-triangle me-2"></i>{{ errorMessage }}
+        <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+      </div>
+    </div>
+  </div>

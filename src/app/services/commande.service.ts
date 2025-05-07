@@ -35,4 +35,7 @@ export class CommandeService {
   deleteCommande(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  getByClient(clientId: number): Observable<Commande[]> {
+    return this.http.get<Commande[]>(`${this.apiUrl}?client=${clientId}`);
+  }
 }

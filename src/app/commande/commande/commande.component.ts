@@ -15,7 +15,7 @@ export class CommandeComponent implements OnInit {
   commandes: Commande[] = [];
   articles: Article[] = [];
   currentPage: number = 1; // Page actuelle
-  itemsPerPage: number = 5;
+  itemsPerPage: number = 10;
   filteredCommandes: Commande[] = [];
   searchText: string = '';
   constructor(private commandeService: CommandeService,    private articleService: ArticleService,    private router: Router

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ArticleListComponent implements OnInit {
   articles: Article[] = [];
   currentPage = 1;
-  itemsPerPage = 3;
+  itemsPerPage = 6;
   searchText: string = '';
 
   constructor(private articleService: ArticleService,private router: Router) {}

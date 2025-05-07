@@ -13,12 +13,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AddCommandeComponent implements OnInit {
   commande: Commande = {
-    id:1,
+    id: 1,
     quantite: 1,
     articleId: 0,
     dateCommande: '2025-04-25',
     status: 'en cours',
-    total:0
+    total: 0,
+    clientId: 0
   };
   successMessage: string = '';
   selectedArticle: Article | null = null;
@@ -67,7 +68,7 @@ export class AddCommandeComponent implements OnInit {
         this.successMessage = `✅ Commande ajoutée avec succès ! Total à payer: ${total} DT`;
         this.tot=response.total;
         setTimeout(() => {
-          this.router.navigate(['/commandes']);
+          this.router.navigate(['/commande']);
         }, 2000);
       },
       (error) => {

@@ -23,6 +23,8 @@ import { AddCommandeComponent } from './commande/add-commande/add-commande.compo
 import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
 import { ArticleSearchComponent } from './article-search/article-search.component';
 import { PaginatePipe } from './pipes/paginate.pipe';
+import { ClientComponent } from './client/client.component';
+import { AddClientComponent } from './add-client/add-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,8 @@ import { PaginatePipe } from './pipes/paginate.pipe';
     ModifierCommandeComponent,
     ArticleSearchComponent,
     PaginatePipe,
+    ClientComponent,
+    AddClientComponent,
 
 
     
@@ -46,7 +50,8 @@ import { PaginatePipe } from './pipes/paginate.pipe';
     HttpClientModule,  // Pour les requêtes HTTP vers l'API
     FormsModule, 
     AppRoutingModule, 
-    RouterModule,  // Ajoute le RouterModule ici si nécessaire
+    RouterModule,
+    ReactiveFormsModule  // Ajoute le RouterModule ici si nécessaire
 
 
   ],

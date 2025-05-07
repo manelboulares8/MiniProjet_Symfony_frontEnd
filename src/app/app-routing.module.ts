@@ -7,6 +7,8 @@ import { AddCommandeComponent } from './commande/add-commande/add-commande.compo
 import { CommandeComponent } from './commande/commande/commande.component';
 import { ModifierCommandeComponent } from './commande/modifier-commande/modifier-commande.component';
 import { ArticleSearchComponent } from './article-search/article-search.component';
+import { ClientComponent } from './client/client.component';
+import { AddClientComponent } from './add-client/add-client.component';
 
 const routes: Routes = [
   { path: 'add-article', component: ArticleAddComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
  {path:'commande',component:CommandeComponent},
  { path: 'commandes/edit/:id', component: ModifierCommandeComponent },
  {path:'searchByPrice',component:ArticleSearchComponent},
+ {path:'clients',component:ClientComponent},
+ {path:'add-client',component:AddClientComponent}
 
 ];
 
