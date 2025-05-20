@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/" routerLinkActive="active">Home</a>
+          <a class="nav-link active" routerLink="/lister-articles" routerLinkActive="active">Home</a>
         </li>
         <li class="nav-item">
-          <button class="nav-link" routerLink="/add-article" routerLinkActive="active">Ajouter un article</button>
+          <button class="nav-link" routerLink="/add-article" routerLinkActive="active" *ngIf="isAdmin" >Ajouter un article</button>
         </li>
         <li class="nav-item">
           <button class="nav-link" routerLink="/add-commande" routerLinkActive="active">Ajouter une commande</button>
@@ -21,14 +21,17 @@
 
         </li>
         <li>
+          <button class="nav-link" routerLink="/lister-clients" routerLinkActive="active" *ngIf="isAdmin">Gestion des clients</button>
+
+        </li>
+        <li>
           <button class="nav-link" routerLink="/searchByPrice" routerLinkActive="active">Filtrer les articles</button>
 
         </li>
         <!-- Autres éléments de la navbar -->
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success" routerLink="/login" routerLinkActive="active">Se déconnecter</button>
       </form>
     </div>
   </div>

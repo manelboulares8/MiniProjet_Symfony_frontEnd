@@ -49,7 +49,7 @@
       <!-- Section Total en temps réel -->
       <div class="mb-4 total-container p-3 rounded" style="background-color: #f8f9fa; border-left: 5px solid #2584fc;">
         <h5 class="text-center mb-0">
-          Total: <span class="fw-bold">{{ tot }}</span>
+          Total: <span class="fw-bold">{{ commande.total }}</span>
         </h5>
         <div *ngIf="selectedArticle" class="text-center text-muted small mt-1">
           ({{ commande.quantite }} × {{ selectedArticle.prix | currency:'DT':'symbol':'1.2-2' }})

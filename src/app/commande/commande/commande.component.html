@@ -9,6 +9,7 @@
         <thead>
           <tr class="table-header">
             <th>ID</th>
+            <th *ngIf="isAdmin">Client</th>
             <th>Article</th>
             <th>Quantité</th>
             <th>Date</th>
@@ -20,6 +21,7 @@
         <tbody>
           <tr *ngFor="let commande of commandes | paginate: currentPage : 5">
             <td class="fw-bold">#{{commande.id}}</td>
+<td *ngIf="isAdmin">{{ commande.clientName || 'Chargement...' }}</td>
             <td>{{ getArticleName(commande.articleId) }}</td>
             <td>{{ commande.quantite }}</td>
             <td>{{ commande.dateCommande | date:'mediumDate' }}</td>
@@ -34,7 +36,7 @@
                 {{ commande.status }}
               </span>
             </td>
-            <td>
+            <td *ngIf="isAdmin">
               <button class="btn btn-action btn-edit" (click)="editCommande(commande.id)">
                 <i class="fas fa-edit"></i> Modifier
               </button>

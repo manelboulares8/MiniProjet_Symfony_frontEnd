@@ -25,6 +25,9 @@ import { ArticleSearchComponent } from './article-search/article-search.componen
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { ClientComponent } from './client/client.component';
 import { AddClientComponent } from './add-client/add-client.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ListerClientsComponent } from './lister-clients/lister-clients.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +43,9 @@ import { AddClientComponent } from './add-client/add-client.component';
     PaginatePipe,
     ClientComponent,
     AddClientComponent,
+    LoginComponent,
+    RegisterComponent,
+    ListerClientsComponent,
 
 
     

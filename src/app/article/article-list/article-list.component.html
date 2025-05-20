@@ -42,14 +42,14 @@
             </ul>
 
             <div class="card-footer bg-transparent border-top-0 text-center">
-              <div class="d-grid gap-2">
-                <a [routerLink]="['/articles/edit', article.id]" class="btn btn-warning btn-sm">
+              <div class="d-grid gap-2" >
+                <a [routerLink]="['/articles/edit', article.id]" class="btn btn-warning btn-sm" *ngIf="isAdmin" >
                   ✏️ Modifier
                 </a>
                 <a class="btn btn-success btn-sm" (click)="passerCommande(article.id)">
                   🛒 Passer commande
                 </a>
-                <button class="btn btn-danger btn-sm" (click)="supprimerArticle(article.id)">
+                <button class="btn btn-danger btn-sm" (click)="supprimerArticle(article.id)" *ngIf="isAdmin">
                   🗑️ Supprimer
                 </button>
               </div>

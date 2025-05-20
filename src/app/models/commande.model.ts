@@ -5,6 +5,7 @@ export interface Commande {
     dateCommande: string; // en général au format ISO (ex: "2025-04-26T14:00:00")
     status: string;   
     total:number; 
-    clientId:number;  // ex: "en attente", "validée", "annulée", etc.
+    clientId?:number;  
+    clientName?:string;// ex: "en attente", "validée", "annulée", etc.
   }
   

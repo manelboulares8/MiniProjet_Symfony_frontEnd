@@ -6,4 +6,6 @@ export interface Client {
     email: string;
     adresse: string;
     commandes?: Commande[];
+      role?: 'admin' | 'user';
+
   }

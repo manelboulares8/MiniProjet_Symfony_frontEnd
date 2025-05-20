@@ -2,6 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { Article, ArticleService } from '../../services/article.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-article-list',
@@ -16,9 +17,12 @@ export class ArticleListComponent implements OnInit {
   itemsPerPage = 6;
   searchText: string = '';
 
-  constructor(private articleService: ArticleService,private router: Router) {}
+  constructor(private articleService: ArticleService,private router: Router,private authService:AuthService) {}
+  isAdmin: boolean = false;
 
   ngOnInit(): void {
+        this.isAdmin = this.authService.isAdmin();
+
     this.articleService.getArticles().subscribe({
       next: data => this.articles = data,
       error: err => console.error(err)

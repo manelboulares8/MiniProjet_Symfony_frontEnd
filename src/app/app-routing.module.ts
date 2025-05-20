@@ -9,12 +9,15 @@ import { ModifierCommandeComponent } from './commande/modifier-commande/modifier
 import { ArticleSearchComponent } from './article-search/article-search.component';
 import { ClientComponent } from './client/client.component';
 import { AddClientComponent } from './add-client/add-client.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ListerClientsComponent } from './lister-clients/lister-clients.component';
 
 const routes: Routes = [
   { path: 'add-article', component: ArticleAddComponent },
 
 {path :'lister-articles',component:ArticleListComponent},
-{ path: '', redirectTo: 'lister-articles', pathMatch: 'full' },
+{ path: '', redirectTo: 'login', pathMatch: 'full' },
 { path: 'articles/edit/:id', component: ArticleEditComponent },
  // ✅ route par défaut
  { path: 'add-commande', component: AddCommandeComponent },
@@ -22,7 +25,10 @@ const routes: Routes = [
  { path: 'commandes/edit/:id', component: ModifierCommandeComponent },
  {path:'searchByPrice',component:ArticleSearchComponent},
  {path:'clients',component:ClientComponent},
- {path:'add-client',component:AddClientComponent}
+ {path:'add-client',component:AddClientComponent},
+ {path:'login',component:LoginComponent},
+ {path:'register',component:RegisterComponent},
+ {path:'lister-clients',component:ListerClientsComponent}
 
 ];
 

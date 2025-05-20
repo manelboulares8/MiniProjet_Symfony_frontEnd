@@ -4,6 +4,7 @@ import { CommandeService } from '../../services/commande.service';
 import { Article } from '../../models/article.model';
 import { ArticleService } from '../../services/article.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-commande',
@@ -15,15 +16,48 @@ export class CommandeComponent implements OnInit {
   commandes: Commande[] = [];
   articles: Article[] = [];
   currentPage: number = 1; // Page actuelle
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 5;
   filteredCommandes: Commande[] = [];
   searchText: string = '';
-  constructor(private commandeService: CommandeService,    private articleService: ArticleService,    private router: Router
+/*  constructor(private commandeService: CommandeService,    private articleService: ArticleService,    private router: Router
     // Ajoutez ceci
   ) {}
 
   ngOnInit(): void {
     this.loadArticles();
+  }*/
+ 
+  isAdmin: boolean = false;
+
+  constructor(
+    private commandeService: CommandeService,
+    private articleService: ArticleService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.isAdmin = this.authService.isAdmin();
+    this.loadArticles();
+    this.loadCommandes();
+  }
+
+  loadCommandes(): void {
+    this.commandeService.getCommandes().subscribe({
+      next: (commandes) => {
+        this.commandes = commandes;
+        this.loadClientNames();
+      },
+      error: (err) => console.error('Erreur chargement commandes:', err)
+    });
+  }
+
+  loadClientNames(): void {
+    this.commandes.forEach(commande => {
+      this.commandeService.getClientNameByCommandeId(commande.id).subscribe(
+        name => commande.clientName = name
+      );
+    });
   }
 
   loadArticles(): void {
@@ -36,11 +70,11 @@ export class CommandeComponent implements OnInit {
     });
   }
 
-  loadCommandes() {
+ /* loadCommandes() {
     this.commandeService.getCommandes().subscribe(data => {
       this.commandes = data;
     });
-  }
+  }*/
 
   deleteCommande(id: number): void {
     const confirmation = confirm('Voulez-vous vraiment supprimer cette commande ?');

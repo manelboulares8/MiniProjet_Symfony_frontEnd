@@ -1,0 +1,12 @@
+<div class="login-container">
+  <h2>Connexion</h2>
+  <input [(ngModel)]="email" type="email" placeholder="Email">
+  <input [(ngModel)]="password" type="password" placeholder="Mot de passe">
+  <button (click)="onLogin()">Se connecter</button>
+  <p *ngIf="error" class="error">{{ error }}</p>
+  <br><br>
+  Vous n'avez pas de compte? 
+
+            <a class="nav-link active" routerLink="/register" routerLinkActive="active">S'inscrire</a>
+
+</div>
