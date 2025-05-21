@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, map, Observable, tap, throwError } from 'rxjs';
 import { Client } from '../models/client.model';
 
 @Injectable({
@@ -45,9 +45,27 @@ export class ClientService {
   );
 }
 getUsers(): Observable<Client[]> {
-    return this.http.get<Client[]>(`${this.apiUrl}/users`);
-  }
-
+  const url = `${this.apiUrl}/list-users`;
+  console.log('URL appelée:', url);
+  
+  return this.http.get<Client[]>(url, {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    withCredentials: true
+  }).pipe(
+    catchError(error => {
+      console.error('Détails de l\'erreur:', {
+        status: error.status,
+        url: error.url,
+        message: error.message,
+        error: error.error
+      });
+      return throwError(() => new Error('Échec du chargement des utilisateurs'));
+    })
+  );
+}
   updateClient(id: number, client: Partial<Client>): Observable<Client> {
     return this.http.put<Client>(`${this.apiUrl}/${id}`, client);
   }

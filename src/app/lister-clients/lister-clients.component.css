@@ -1,8 +1,60 @@
-.table {
-  margin-top: 20px;
+.clients-container {
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.btn-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+.clients-header {
+  background: linear-gradient(135deg, #6eb1ce, #203a43, #2c5364);
+}
+
+.clients-body {
+  background-color: #f8f9fa;
+}
+
+/* Tableau */
+.clients-table {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-header {
+  background-color: #4f8fce;
+  color: white;
+}
+
+/* Boutons */
+.btn-action {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.btn-edit {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+}
+
+.btn-edit:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Effets */
+tr:hover {
+  background-color: rgba(37, 117, 252, 0.05);
 }

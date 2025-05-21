@@ -1,58 +1,68 @@
-<div class="container mt-4">
-  <h2>Gestion des Clients</h2>
+<div class="container mt-4 clients-container">
+  <div class="clients-header p-4 rounded-top">
+    <h2 class="text-center mb-4 text-white">👥 Gestion des Clients</h2>
+  </div>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Email</th>
-        <th>Adresse</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let client of clients">
-        <td>{{ client.id }}</td>
-        <td>{{ client.nom }}</td>
-        <td>{{ client.email }}</td>
-        <td>{{ client.adresse }}</td>
-        <td>
-          <button class="btn btn-sm btn-primary me-2" (click)="selectClient(client)">
-            Modifier
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="deleteClient(client.id)">
-            Supprimer
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <!-- Formulaire de modification -->
-  <div class="card mt-4" *ngIf="selectedClient">
-    <div class="card-header">
-      <h3>Modifier Client</h3>
+  <div class="clients-body p-4 rounded-bottom">
+    <div class="table-responsive">
+      <table class="table table-hover clients-table">
+        <thead>
+          <tr class="table-header">
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Adresse</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let client of clients">
+            <td class="fw-bold">#{{ client.id }}</td>
+            <td>{{ client.nom }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.adresse }}</td>
+            <td>
+              <button class="btn btn-action btn-edit me-2" (click)="selectClient(client)">
+                <i class="fas fa-edit"></i> Modifier
+              </button>
+              <button class="btn btn-action btn-delete" (click)="deleteClient(client.id)">
+                <i class="fas fa-trash-alt"></i> Supprimer
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="card-body">
-      <div class="mb-3">
-        <label class="form-label">Nom</label>
-        <input type="text" class="form-control" [(ngModel)]="selectedClient.nom">
+
+    <div *ngIf="clients.length === 0" class="alert alert-info mt-4 text-center">
+      Aucun client trouvé.
+    </div>
+
+    <!-- Formulaire de modification -->
+    <div class="card mt-4 shadow-sm" *ngIf="selectedClient">
+      <div class="card-header bg-primary text-white">
+        <h4>✏️ Modifier Client</h4>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="selectedClient.email">
+      <div class="card-body bg-light">
+        <div class="mb-3">
+          <label class="form-label">Nom</label>
+          <input type="text" class="form-control" [(ngModel)]="selectedClient.nom">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" [(ngModel)]="selectedClient.email">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Adresse</label>
+          <textarea class="form-control" [(ngModel)]="selectedClient.adresse"></textarea>
+        </div>
+        <button class="btn btn-success me-2" (click)="updateClient()">
+          ✅ Enregistrer
+        </button>
+        <button class="btn btn-secondary" (click)="selectedClient = null">
+          ❌ Annuler
+        </button>
       </div>
-      <div class="mb-3">
-        <label class="form-label">Adresse</label>
-        <textarea class="form-control" [(ngModel)]="selectedClient.adresse"></textarea>
-      </div>
-      <button class="btn btn-success me-2" (click)="updateClient()">
-        Enregistrer
-      </button>
-      <button class="btn btn-secondary" (click)="selectedClient = null">
-        Annuler
-      </button>
     </div>
   </div>
 </div>
